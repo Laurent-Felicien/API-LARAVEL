@@ -13,7 +13,6 @@ class UserController extends Controller
 
     //Enregistrer un nouvel utilisateur
     public function register(RegisterUser $request) {
-        //Envelopper tout le code dans un try catch
         try {
             $user = new User();
             $user->name = $request->name;

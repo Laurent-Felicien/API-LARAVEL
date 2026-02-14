@@ -1,8 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-
-=======
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\PostController;
@@ -22,7 +19,6 @@ Route::put('posts/edit/{post}', [PostController::class, 'update']);
 
 //Supprimer un post
 Route::delete('posts/{post}', [PostController::class, 'delete']);
->>>>>>> ffc738e (Mise à jour de l'API complète)
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -18,9 +18,7 @@ class UserController extends Controller
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->password = Hash::make($request->password, [
-                'rounds' => 12
-            ]);
+            $user->password = $request->password;
             $user->save();
 
             return response()->json([
@@ -37,25 +35,4 @@ class UserController extends Controller
         }
     }
 
-    //Connecter un utilisateur
-    public function login(LogUserRequest $request) {
-
-        //Connecter l'utilisateur
-
-        //Comparer les données de l'utilisateur avec les données qu'il entre
-        if(auth()->attempt($request->only(['email', 'password']))) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Utilisateur connecté avec succès',
-                'user' => auth()->user()
-            ]);
-        }else {
-            //Si les informations ne correspondent à aucun utilisateur
-            return response()->json([
-                'status_code' => 403,
-                'message' => 'Identifiants invalides'
-            ], 401);
-        }
-
-}
 }

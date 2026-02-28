@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
-    // Déconnecter l'utilisateur connecté 
+    // Déconnecter l'utilisateur connecté
     Route::middleware('auth:sanctum')->post('logout', [UserController::class, 'logout']);
 
     // Recuperer la liste des articles

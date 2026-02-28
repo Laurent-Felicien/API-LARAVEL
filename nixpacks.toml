@@ -1,21 +1,21 @@
 # Configuration Railway / Nixpacks
-# Indique à Railway d'utiliser PHP 8.2 et d'installer les extensions nécessaires à Laravel
+# PHP 8.3 uniquement — on ignore Node/npm car c'est une API pure Laravel
 
 [phases.setup]
 nixPkgs = ["php83", "php83Extensions.pdo", "php83Extensions.pdo_mysql", "php83Extensions.mbstring", "php83Extensions.tokenizer", "php83Extensions.xml", "php83Extensions.ctype", "php83Extensions.fileinfo", "php83Extensions.bcmath", "php83Extensions.curl", "composer"]
 
+[phases.install]
+# On désactive l'installation npm en ne faisant que composer
+cmds = [
+  "composer install --no-dev --optimize-autoloader --no-interaction"
+]
+
 [phases.build]
 cmds = [
-  # Installation des dépendances PHP sans les packages de dev
-  "composer install --no-dev --optimize-autoloader",
-  # Génère la clé APP_KEY si elle n'existe pas
   "php artisan key:generate --force",
-  # Optimise le chargement des configs, routes et vues pour la prod
   "php artisan config:cache",
-  "php artisan route:cache",
-  "php artisan view:cache"
+  "php artisan route:cache"
 ]
 
 [start]
-# Lance le serveur PHP intégré de Laravel sur le port fourni par Railway
 cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"

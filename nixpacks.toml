@@ -1,14 +1,11 @@
-# Configuration Railway / Nixpacks
-# PHP 8.3 uniquement — on ignore Node/npm car c'est une API pure Laravel
+# Configuration Railway
+# PHP 8.4 requis par les dépendances Laravel 12
 
 [phases.setup]
-nixPkgs = ["php83", "php83Extensions.pdo", "php83Extensions.pdo_mysql", "php83Extensions.mbstring", "php83Extensions.tokenizer", "php83Extensions.xml", "php83Extensions.ctype", "php83Extensions.fileinfo", "php83Extensions.bcmath", "php83Extensions.curl", "composer"]
+nixPkgs = ["php84", "php84Extensions.pdo", "php84Extensions.pdo_mysql", "php84Extensions.mbstring", "php84Extensions.tokenizer", "php84Extensions.xml", "php84Extensions.ctype", "php84Extensions.fileinfo", "php84Extensions.bcmath", "php84Extensions.curl", "composer"]
 
 [phases.install]
-# On désactive l'installation npm en ne faisant que composer
-cmds = [
-  "composer install --no-dev --optimize-autoloader --no-interaction"
-]
+cmds = ["composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs"]
 
 [phases.build]
 cmds = [

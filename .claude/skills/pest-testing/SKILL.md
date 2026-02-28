@@ -1,17 +1,9 @@
 ---
 name: pest-testing
-<<<<<<< HEAD
-description: >-
-  Tests applications using the Pest 4 PHP framework. Activates when writing tests, creating unit or feature
-  tests, adding assertions, testing Livewire components, browser testing, debugging test failures,
-  working with datasets or mocking; or when the user mentions test, spec, TDD, expects, assertion,
-  coverage, or needs to verify functionality works.
-=======
 description: "Tests applications using the Pest 4 PHP framework. Activates when writing tests, creating unit or feature tests, adding assertions, testing Livewire components, browser testing, debugging test failures, working with datasets or mocking; or when the user mentions test, spec, TDD, expects, assertion, coverage, or needs to verify functionality works."
 license: MIT
 metadata:
   author: laravel
->>>>>>> ffc738e (Mise à jour de l'API complète)
 ---
 
 # Pest Testing 4
@@ -57,22 +49,12 @@ All tests must be written using Pest. Use `php artisan make:test --pest {name}`.
 ### Basic Test Structure
 
 
-<<<<<<< HEAD
-<code-snippet name="Basic Pest Test Example" lang="php">
-
-it('is true', function () {
-    expect(true)->toBeTrue();
-});
-
-</code-snippet>
-=======
 <!-- Basic Pest Test Example -->
 ```php
 it('is true', function () {
     expect(true)->toBeTrue();
 });
 ```
->>>>>>> ffc738e (Mise à jour de l'API complète)
 
 
 
@@ -90,22 +72,12 @@ it('is true', function () {
 
 Use specific assertions (`assertSuccessful()`, `assertNotFound()`) instead of `assertStatus()`:
 
-<<<<<<< HEAD
-<code-snippet name="Pest Response Assertion" lang="php">
-
-it('returns all', function () {
-    $this->postJson('/api/docs', [])->assertSuccessful();
-});
-
-</code-snippet>
-=======
 <!-- Pest Response Assertion -->
 ```php
 it('returns all', function () {
     $this->postJson('/api/docs', [])->assertSuccessful();
 });
 ```
->>>>>>> ffc738e (Mise à jour de l'API complète)
 
 
 
@@ -127,25 +99,15 @@ Import mock function before use: `use function Pest\Laravel\mock;`
 
 Use datasets for repetitive tests (validation rules, etc.):
 
-<<<<<<< HEAD
-<code-snippet name="Pest Dataset Example" lang="php">
-
-=======
 <!-- Pest Dataset Example -->
 ```php
->>>>>>> ffc738e (Mise à jour de l'API complète)
 it('has emails', function (string $email) {
     expect($email)->not->toBeEmpty();
 })->with([
     'james' => 'james@laravel.com',
     'taylor' => 'taylor@laravel.com',
 ]);
-<<<<<<< HEAD
-
-</code-snippet>
-=======
 ```
->>>>>>> ffc738e (Mise à jour de l'API complète)
 
 
 
@@ -176,13 +138,8 @@ Browser tests run in real browsers for full integration testing:
 - Switch color schemes (light/dark mode) when appropriate.
 - Take screenshots or pause tests for debugging.
 
-<<<<<<< HEAD
-<code-snippet name="Pest Browser Test Example" lang="php">
-
-=======
 <!-- Pest Browser Test Example -->
 ```php
->>>>>>> ffc738e (Mise à jour de l'API complète)
 it('may reset the password', function () {
     Notification::fake();
 
@@ -199,12 +156,7 @@ it('may reset the password', function () {
 
     Notification::assertSent(ResetPassword::class);
 });
-<<<<<<< HEAD
-
-</code-snippet>
-=======
 ```
->>>>>>> ffc738e (Mise à jour de l'API complète)
 
 
 
@@ -214,22 +166,12 @@ it('may reset the password', function () {
 
 Quickly validate multiple pages have no JavaScript errors:
 
-<<<<<<< HEAD
-<code-snippet name="Pest Smoke Testing Example" lang="php">
-
-$pages = visit(['/', '/about', '/contact']);
-
-$pages->assertNoJavaScriptErrors()->assertNoConsoleLogs();
-
-</code-snippet>
-=======
 <!-- Pest Smoke Testing Example -->
 ```php
 $pages = visit(['/', '/about', '/contact']);
 
 $pages->assertNoJavaScriptErrors()->assertNoConsoleLogs();
 ```
->>>>>>> ffc738e (Mise à jour de l'API complète)
 
 
 
@@ -251,23 +193,13 @@ Split tests across parallel processes for faster CI runs.
 
 Pest 4 includes architecture testing (from Pest 3):
 
-<<<<<<< HEAD
-<code-snippet name="Architecture Test Example" lang="php">
-
-=======
 <!-- Architecture Test Example -->
 ```php
->>>>>>> ffc738e (Mise à jour de l'API complète)
 arch('controllers')
     ->expect('App\Http\Controllers')
     ->toExtendNothing()
     ->toHaveSuffix('Controller');
-<<<<<<< HEAD
-
-</code-snippet>
-=======
 ```
->>>>>>> ffc738e (Mise à jour de l'API complète)
 
 
 

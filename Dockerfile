@@ -11,14 +11,16 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
-# On copie TOUT le projet d'abord (artisan doit être présent pour composer)
+# Copier tout le projet
 COPY . .
 
-# Ensuite on installe les dépendances
-# --no-scripts évite que composer essaie d'exécuter artisan pendant l'install
+# Créer le .env depuis .env.example avant de lancer composer
+RUN cp .env.example .env
+
+# Installer les dépendances sans scripts (évite artisan pendant install)
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts --ignore-platform-reqs
 
-# Maintenant que tout est en place, on génère la clé
+# Maintenant le .env existe, on peut générer la clé
 RUN php artisan key:generate --force
 
 EXPOSE 8000
